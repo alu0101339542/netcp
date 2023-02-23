@@ -1,0 +1,13 @@
+CC = g++
+CFLAGS = -std=c++14 -g -Wall
+DEPS = Socket.h
+OBJ = socket.o NetcpReceive.o
+
+%.o: %.cc $(DEPS)
+				$(CC) -c -o $@ $< $(CFLAGS)
+
+NetcpReceive: $(OBJ)
+				$(CC) -o $@ $^ $(CFLAGS)
+
+clean:
+				rm NetcpReceive *.o
